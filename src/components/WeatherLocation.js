@@ -1,14 +1,14 @@
 import React from 'react';
 import Location from './Location';
-import WheatherData from './WheatherData';
+import WeatherData from './WeatherData';
 
-const WheatherLocation = () => (
+const WeatherLocation = () => (
     <div>
         <Location>
         </Location>
-        <WheatherData>
-        </WheatherData>
+        <WeatherData>
+        </WeatherData>
     </div>
 );
 
-export default WheatherLocation;
+export default WeatherLocation;
