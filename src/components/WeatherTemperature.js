@@ -1,23 +1,40 @@
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
+import {
+    CLOUD,
+    CLOUDY,
+    SUN,
+    RAIN,
+    SNOW,//"snow"
+    WINDY,
+} from "../constants/weather";
 
 const icons = {
-    sunny: "day-sunny",
-    fog: "day-fog",
+    [CLOUD]: "cloud",
+    [CLOUDY]: "cloudy",
+    [SUN]: "day-sunny",
+    [RAIN]: "rain",
+    [SNOW]: "snow",
+    [WINDY]: "windy",
 };
+// Computed property names, like on object literals
+// let key = "z";
+// let { [key]: foo } = { z: "bar" };
+
+// console.log(foo); // "bar"
 
 const getWeatherIcon = weatherState => {
-    const icon = icons[weatherState];
+    const icon = icons[weatherState]; //icons["snow"]
     if (icon)
         return <WeatherIcons name={ icon } size="2x" />
     else
         return <WeatherIcons name={ "day-sunny" } size="2x" />
 };
 
-const WeatherTemperature = ( {temperature, weatherState }) => (
+const WeatherTemperature = ( { temperature , weatherState }) => (
     <div>
         { getWeatherIcon(weatherState) }
-        <span>{`${temperature}°C`}</span>
+        <span>{ `${temperature}°C` }</span>
     </div>
 );
 
