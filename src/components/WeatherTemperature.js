@@ -1,5 +1,6 @@
 import React from 'react';
-import WeatherIcons from 'react-weathericons';
+import WeatherIcons from 'react-weathericons'; 
+import PropTypes from 'prop-types';
 import {
     CLOUD,
     CLOUDY,
@@ -20,7 +21,6 @@ const icons = {
 // Computed property names, like on object literals
 // let key = "z";
 // let { [key]: foo } = { z: "bar" };
-
 // console.log(foo); // "bar"
 
 const getWeatherIcon = weatherState => {
@@ -31,11 +31,16 @@ const getWeatherIcon = weatherState => {
         return <WeatherIcons name={ "day-sunny" } size="2x" />
 };
 
-const WeatherTemperature = ( { temperature , weatherState }) => (
+const WeatherTemperature = ( { temperature , weatherState }) => (//21, "snow"
     <div>
         { getWeatherIcon(weatherState) }
         <span>{ `${temperature}°C` }</span>
     </div>
 );
+
+WeatherTemperature.propTypes = {
+    temperature: PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired,
+};
 
 export default WeatherTemperature;
