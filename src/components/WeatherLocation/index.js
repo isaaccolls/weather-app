@@ -21,12 +21,12 @@ const data = {
     wind: "10 m/s",
 };
 
-const data1 = {
-    temperature: 15,
-    weatherState: SNOW,
-    humidity: 73,
-    wind: "200 m/s",
-};
+// const data1 = {
+//     temperature: 15,
+//     weatherState: SNOW,
+//     humidity: 73,
+//     wind: "200 m/s",
+// };
 
 // const WeatherLocation = () => (
 //     <div className="weatherLocationCont">
@@ -45,6 +45,25 @@ class WeatherLocation extends Component {
         };
     }
 
+    getWeatherState = weather_data => {
+        return SNOW;
+    }
+
+    getData = weather_data => {
+        const { humidity, temp } = weather_data.main;
+        const { speed } = weather_data.wind;
+        const weatherState = this.getWeatherState(weather_data);
+
+        const data = {
+            humidity,
+            temperature: temp,
+            weatherState,
+            wind: `${speed} m/s`,
+        };
+
+        return data;
+    }
+
     handleUpdateCick = () => {
         console.log("actualizado");
         fetch(api_weather).then( resolve => {
@@ -52,14 +71,21 @@ class WeatherLocation extends Component {
             // debugger;
             return resolve.json();
         }).then(data => {
+            console.log("data json")
             console.log(data);
-            // debugger;
+            // debugger; 
+            const newWeather = this.getData(data);
+            console.log("newWeather");
+            console.log(newWeather);
+            this.setState({
+                data: newWeather,
+            });
         });
 
-        this.setState({
-            city: 'Colorado',
-            data: data1,
-        });
+        // this.setState({
+        //     city: 'Colorado',
+        //     data: data1,
+        // });
     }
 
     render() {
