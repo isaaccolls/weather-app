@@ -47,7 +47,6 @@ class WeatherLocation extends Component {
     }
 
     getTemp = kelvin => {
-        // return Number(convert(kelvin).from("K").to("C").toFixed(2));
         return Number(convert(kelvin).from("K").to("C").toFixed(2));
     }
 
