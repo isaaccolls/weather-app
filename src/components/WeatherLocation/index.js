@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import convert from 'convert-units';
 import Location from './Location';
+import { api_weather } from '../../constants/api_url'; // Se usan las llaves porque no se exporto con default
+import transformWeather from '../../services/transformWeather';
 import WeatherData from './WeatherData';
 import './styles.css';
 import {
     SNOW,//"snow"
 } from "../../constants/weather";
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const location = "Buenos Aires,ar";
-const api_key = "0f4e5887d7cf90e04bb3c6c61c84f638";
-const url_base_weather = "https://samples.openweathermap.org/data/2.5/weather";
+// const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+// const location = "Buenos Aires,ar";
+// const api_key = "0f4e5887d7cf90e04bb3c6c61c84f638";
+// const url_base_weather = "https://samples.openweathermap.org/data/2.5/weather";
 
-const api_weather = `${proxyUrl}${url_base_weather}?q=${location}&appid=${api_key}`;
+// const api_weather = `${proxyUrl}${url_base_weather}?q=${location}&appid=${api_key}`;
 // console.log("api_weather: " + api_weather);
 
 const data = {
@@ -46,29 +47,29 @@ class WeatherLocation extends Component {
         };
     }
 
-    getTemp = kelvin => {
-        return Number(convert(kelvin).from("K").to("C").toFixed(2));
-    }
+    // getTemp = kelvin => {
+    //     return Number(convert(kelvin).from("K").to("C").toFixed(2));
+    // }
 
-    getWeatherState = weather_data => {
-        return SNOW;
-    }
+    // getWeatherState = weather_data => {
+    //     return SNOW;
+    // }
 
-    getData = weather_data => {
-        const { humidity, temp } = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(weather_data);
-        const temperature = this.getTemp(temp);
+    // getData = weather_data => {
+    //     const { humidity, temp } = weather_data.main;
+    //     const { speed } = weather_data.wind;
+    //     const weatherState = this.getWeatherState(weather_data);
+    //     const temperature = this.getTemp(temp);
 
-        const data = {
-            humidity,
-            temperature,
-            weatherState,
-            wind: `${speed} m/s`,
-        };
+    //     const data = {
+    //         humidity,
+    //         temperature,
+    //         weatherState,
+    //         wind: `${speed} m/s`,
+    //     };
 
-        return data;
-    }
+    //     return data;
+    // }
 
     handleUpdateCick = () => {
         console.log("actualizado");
@@ -80,7 +81,8 @@ class WeatherLocation extends Component {
             console.log("data json")
             console.log(data);
             // debugger; 
-            const newWeather = this.getData(data);
+            // const newWeather = this.getData(data);
+            const newWeather = transformWeather(data);
             console.log("newWeather");
             console.log(newWeather);
             this.setState({
