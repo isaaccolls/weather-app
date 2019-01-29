@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import './styles.css';
 import {
     CLOUD,
-    CLOUDY,
     SUN,
     RAIN,
     SNOW,//"snow"
-    WINDY,
+    THUNDER,
+    DRIZZLE,
 } from "../../../constants/weather";
 
 const icons = {
     [CLOUD]: "cloud",
-    [CLOUDY]: "cloudy",
     [SUN]: "day-sunny",
     [RAIN]: "rain",
     [SNOW]: "snow",
-    [WINDY]: "windy",
+    [THUNDER]: "day-thunderstore",
+    [DRIZZLE]: "day-showers",
 };
 // Computed property names, like on object literals
 // let key = "z";
