@@ -28,18 +28,11 @@ class WeatherLocation extends Component {
 
     componentDidMount() {
         console.log("componentDidMount");
+        this.handleUpdateCick();
     }
 
     componentDidUpdate(prevProps, prevState) {
         console.log("componentDidUpdate");
-    }
-
-    componentWillMount() {
-        console.log("UNSAFE componentWillMount");
-    }
-
-    componentWillUpdate() {
-        console.log("UNSAFE componentWillUpdate");
     }
 
     handleUpdateCick = () => {
