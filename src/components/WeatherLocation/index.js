@@ -8,34 +8,12 @@ import {
     SNOW,//"snow"
 } from "../../constants/weather";
 
-// const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-// const location = "Buenos Aires,ar";
-// const api_key = "0f4e5887d7cf90e04bb3c6c61c84f638";
-// const url_base_weather = "https://samples.openweathermap.org/data/2.5/weather";
-
-// const api_weather = `${proxyUrl}${url_base_weather}?q=${location}&appid=${api_key}`;
-// console.log("api_weather: " + api_weather);
-
 const data = {
     temperature: 3,
     weatherState: SNOW,
     humidity: 7,
     wind: "10 m/s",
 };
-
-// const data1 = {
-//     temperature: 15,
-//     weatherState: SNOW,
-//     humidity: 73,
-//     wind: "200 m/s",
-// };
-
-// const WeatherLocation = () => (
-//     <div className="weatherLocationCont">
-//         <Location city={'Barcelona'}></Location>
-//         <WeatherData data={ data }></WeatherData>
-//     </div>
-// );
 
 class WeatherLocation extends Component {
 
@@ -45,31 +23,24 @@ class WeatherLocation extends Component {
             city: 'Buenos Aires',
             data: data,
         };
+        console.log("constructor");
     }
 
-    // getTemp = kelvin => {
-    //     return Number(convert(kelvin).from("K").to("C").toFixed(2));
-    // }
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
 
-    // getWeatherState = weather_data => {
-    //     return SNOW;
-    // }
+    componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate");
+    }
 
-    // getData = weather_data => {
-    //     const { humidity, temp } = weather_data.main;
-    //     const { speed } = weather_data.wind;
-    //     const weatherState = this.getWeatherState(weather_data);
-    //     const temperature = this.getTemp(temp);
+    componentWillMount() {
+        console.log("UNSAFE componentWillMount");
+    }
 
-    //     const data = {
-    //         humidity,
-    //         temperature,
-    //         weatherState,
-    //         wind: `${speed} m/s`,
-    //     };
-
-    //     return data;
-    // }
+    componentWillUpdate() {
+        console.log("UNSAFE componentWillUpdate");
+    }
 
     handleUpdateCick = () => {
         console.log("actualizado");
@@ -81,7 +52,6 @@ class WeatherLocation extends Component {
             console.log("data json")
             console.log(data);
             // debugger; 
-            // const newWeather = this.getData(data);
             const newWeather = transformWeather(data);
             console.log("newWeather");
             console.log(newWeather);
@@ -89,14 +59,10 @@ class WeatherLocation extends Component {
                 data: newWeather,
             });
         });
-
-        // this.setState({
-        //     city: 'Colorado',
-        //     data: data1,
-        // });
     }
 
     render() {
+        console.log("render");
         const { city, data } = this.state;
         return (
             <div className="weatherLocationCont">
