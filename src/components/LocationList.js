@@ -7,11 +7,10 @@ const LocationList = ({ cities }) => {
     console.log(cities);
     return (
         <div>
-            <WeatherLocation city="Buenos Aires,ar" />
-            <WeatherLocation city="Bogota,col" />
-            <WeatherLocation city="Mexico,mex" />
-            <WeatherLocation city="Washington,us" />
-            <WeatherLocation city="Barcelona,es" />
+            <WeatherLocation city="Cabudare,ve" />
+            <WeatherLocation city="Aspen,us" />
+            <WeatherLocation city="Santiago,cl" />
+            <WeatherLocation city="Chillan,cl" />
         </div>
     );
 };
