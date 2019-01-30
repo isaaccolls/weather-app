@@ -16,32 +16,32 @@ class WeatherLocation extends Component {
             city,
             data: null,
         };
-        console.log("constructor");
+        // console.log("constructor");
     }
 
     componentDidMount() {
-        console.log("componentDidMount");
+        // console.log("componentDidMount");
         this.handleUpdateCick();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("componentDidUpdate");
+        // console.log("componentDidUpdate");
     }
 
     handleUpdateCick = () => {
-        console.log("actualizado");
+        // console.log("actualizado");
         const api_weather = getUrlWeatherByCity(this.state.city);
         fetch(api_weather).then( resolve => {
-            console.log(resolve);
+            // console.log(resolve);
             // debugger;
             return resolve.json();
         }).then(data => {
-            console.log("data json")
+            // console.log("data json")
             console.log(data);
             // debugger; 
             const newWeather = transformWeather(data);
-            console.log("newWeather");
-            console.log(newWeather);
+            // console.log("newWeather");
+            // console.log(newWeather);
             this.setState({
                 data: newWeather,
             });
@@ -49,12 +49,12 @@ class WeatherLocation extends Component {
     }
 
     render() {
-        console.log("render");
+        // console.log("render");
         const { city, data } = this.state;
         return (
             <div className="weatherLocationCont">
-                <Location city={ city }></Location>
-                { data ? <WeatherData data={ data }></WeatherData> : <CircularProgress size={ 50 } /> }
+                <Location city={city}></Location>
+                { data ? <WeatherData data={data}></WeatherData> : <CircularProgress size={50} /> }
             </div>
         );
     }
