@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 // always remember!!
 // const city = this.props.city;
@@ -7,7 +8,11 @@ import PropTypes from 'prop-types';
 class ForecastExtended extends Component {
     render() {
         const { city } = this.props;
-        return (<div>Pronostico Extendido {city}</div>);
+        return (
+            <div>
+                <h2 className="forecast-title">Pronostico Extendido {city}</h2>
+            </div>
+        );
     }
 }
 
