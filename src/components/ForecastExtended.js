@@ -11,13 +11,20 @@ const days = [
     'viernes',
 ];
 
+const data = {
+    temperature: 21,
+    humidity: 20,
+    weatherState: 'normal',
+    wind: 'normal'
+};
+
 // always remember!!
 // const city = this.props.city;
 // const { city } = city;
 class ForecastExtended extends Component {
 
     renderForecastItemDays() {
-        return days.map(day => (<ForecastItem weekDay={day}></ForecastItem>));
+        return days.map(day => (<ForecastItem weekDay={day} hour={420} data={data}></ForecastItem>));
     }
 
     render() {
