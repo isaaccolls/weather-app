@@ -18,6 +18,9 @@ import './styles.css';
 //     wind: 'normal'
 // };
 
+export const api_key2 = "0f4e5887d7cf90e04bb3c6c61c84f638";
+export const url_base_weather2 = "https://api.openweathermap.org/data/2.5/forecast";
+
 // always remember!!
 // const city = this.props.city;
 // const { city } = city;
@@ -28,6 +31,17 @@ class ForecastExtended extends Component {
         this.state = {
             forecastData: null,
         };
+    }
+
+    componentDidMount() {
+        const url_forecast = `${url_base_weather2}?q=${this.props.city}&appid=${api_key2}`;
+        // console.log(url_forecast);
+        fetch(url_forecast).then(data => {
+            // console.log(data);
+            return data.json();
+        }).then(weatherData => {
+            console.log(weatherData);
+        });
     }
 
     renderForecastItemDays() {

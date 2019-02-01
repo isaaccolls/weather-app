@@ -7,6 +7,9 @@ import transformWeather from '../../services/transformWeather';
 import WeatherData from './WeatherData';
 import './styles.css';
 
+export const api_key = "0f4e5887d7cf90e04bb3c6c61c84f638";
+export const url_base_weather = "https://api.openweathermap.org/data/2.5/weather";
+
 class WeatherLocation extends Component {
 
     constructor(props) {
