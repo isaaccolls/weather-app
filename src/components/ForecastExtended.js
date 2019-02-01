@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ForecastItem from './ForecastItem';
+import transformForecast from '../services/transformForecast';
 import './styles.css';
 
 // const days = [
@@ -37,20 +38,23 @@ class ForecastExtended extends Component {
         const url_forecast = `${url_base_weather2}?q=${this.props.city}&appid=${api_key2}`;
         // console.log(url_forecast);
         fetch(url_forecast).then(data => {
-            // console.log(data);
-            return data.json();
+            return data.json()
         }).then(weatherData => {
-            console.log(weatherData);
+            // console.log(weatherData);
+            const forecastData = transformForecast(weatherData);
+            // console.log(forecastData);
+            this.setState({ forecastData });
+            // this.setState = ({ forecastData: forecastData });
         });
     }
 
     renderForecastItemDays() {
-        return "Render Items";
+        return <h1>Render Items</h1>;
         // return days.map(day => (<ForecastItem weekDay={day} hour={420} data={data}></ForecastItem>));
     }
 
-    renderProgess() {
-        return <h3>Cargando pronostico extendido</h3>;
+    renderProgess = () => {
+        return <h3>Cargando pronostico extendido...</h3>;
     }
 
     render() {
