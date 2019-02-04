@@ -13,6 +13,7 @@ const cities = [
     'Aspen,us',
     'Santiago,cl',
     'Chillan,cl',
+    'San Carlos de Bariloche, ar',
 ];
 
 class App extends Component {
