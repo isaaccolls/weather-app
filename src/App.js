@@ -18,6 +18,8 @@ const cities = [
 ];
 
 const store = createStore(() => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// const actionCreator = value => ({ type: 'setCity', value: value });
+const setCity = value => ({ type: 'setCity', value });
 
 class App extends Component {
 
@@ -32,8 +34,9 @@ class App extends Component {
     console.log(`handleSelectedLocation started\ncity: ${city}`);
     this.setState({ city });
 
-    const action = { type: 'setCity', value: city};
-    store.dispatch(action);
+    // const action = { type: 'setCity', value: city };
+    // store.dispatch(action);
+    store.dispatch(setCity(city));
   }
 
   render() {
