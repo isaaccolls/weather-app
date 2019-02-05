@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Grid, Col, Row } from 'react-flexbox-grid';
-import { PropTypes } from 'prop-types';
-// import { createStore } from 'redux';
-import LocationList from './components/LocationList';
+import LocationListContainer from './containers/LocationListContainer';
 import ForecastExtended from './components/ForecastExtended';
 import './App.css';
-import { setCity } from './actions';
 
 const cities = [
     'Cabudare,ve',
@@ -29,15 +25,6 @@ class App extends Component {
     };
   }
 
-  handleSelectedLocation = city => {
-    console.log(`handleSelectedLocation started\ncity: ${city}`);
-    this.setState({ city });
-
-    // store.dispatch(setCity(city));
-    // this.props.dispatchSetCity(city);
-    this.props.setCity(city);
-  }
-
   render() {
     const { city } = this.state;
 
@@ -54,10 +41,9 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList
-              cities={cities}
-              onSelectedLocation={this.handleSelectedLocation}>
-            </LocationList>
+             <LocationListContainer
+              cities={cities}>
+            </LocationListContainer>
           </Col>
           <Col xs={12} md={6}>
             <Paper elevation={4}>
@@ -75,18 +61,4 @@ class App extends Component {
   }
 }
 
-// export default App;
-
-App.propTypes = {
-  setCity: PropTypes.func.isRequired,
-};
-
-const mapDispatchToPropsActions = dispatch => (
-  {
-    // dispatchSetCity: value => dispatch(setCity(value))
-    setCity: value => dispatch(setCity(value))
-  }
-);
-// const AppConnected = connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
-// export default AppConnected;
-export default connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
+export default App;
