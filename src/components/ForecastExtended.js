@@ -4,21 +4,6 @@ import ForecastItem from './ForecastItem';
 import transformForecast from '../services/transformForecast';
 import './styles.css';
 
-// const days = [
-//     'lunes',
-//     'martes',
-//     'miercoles',
-//     'jueves',
-//     'viernes',
-// ];
-
-// const data = {
-//     temperature: 21,
-//     humidity: 20,
-//     weatherState: 'normal',
-//     wind: 'normal'
-// };
-
 export const api_key2 = "0f4e5887d7cf90e04bb3c6c61c84f638";
 export const url_base_weather2 = "https://api.openweathermap.org/data/2.5/forecast";
 
