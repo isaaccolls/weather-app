@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Grid, Col, Row } from 'react-flexbox-grid';
+import { PropTypes } from 'prop-types';
 // import { createStore } from 'redux';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
@@ -33,6 +34,7 @@ class App extends Component {
     this.setState({ city });
 
     // store.dispatch(setCity(city));
+    // this.props.dispatchSetCity(city);
     this.props.setCity(city);
   }
 
@@ -75,11 +77,16 @@ class App extends Component {
 
 // export default App;
 
+App.propTypes = {
+  setCity: PropTypes.func.isRequired,
+};
+
 const mapDispatchToPropsActions = dispatch => (
   {
+    // dispatchSetCity: value => dispatch(setCity(value))
     setCity: value => dispatch(setCity(value))
   }
 );
-const AppConnected = connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
-
-export default AppConnected;
+// const AppConnected = connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
+// export default AppConnected;
+export default connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
