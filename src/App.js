@@ -75,9 +75,11 @@ class App extends Component {
 
 // export default App;
 
-const mapDispatchToPropsActions = dispatch => ({
-  setCity: value => dispatch(setCity(value))
-});
+const mapDispatchToPropsActions = dispatch => (
+  {
+    setCity: value => dispatch(setCity(value))
+  }
+);
 const AppConnected = connect(null, mapDispatchToPropsActions)(App); // Higher-Order Components
 
 export default AppConnected;
