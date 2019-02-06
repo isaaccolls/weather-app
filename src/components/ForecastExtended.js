@@ -31,7 +31,7 @@ const ForecastExtended = ({ city, forecastData }) => (
 
 ForecastExtended.propsTypes = {
     city: PropTypes.string.isRequired,
-    forecastData: PropTypes.array.isRequired,
+    forecastData: PropTypes.array,
 };
 
 export default ForecastExtended;
