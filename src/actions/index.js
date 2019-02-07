@@ -14,15 +14,14 @@ const setForecastData = payload => ({ type: SET_FORECAST_DATA, payload });
 const getWeatherCity = payload => ({type: GET_WEATHER_CITY, payload});
 const setWeatherCity = payload => ({type: SET_WEATHER_CITY, payload});
 
-const api_key2 = "0f4e5887d7cf90e04bb3c6c61c84f638";
-const url_base_weather2 = "https://api.openweathermap.org/data/2.5/forecast";
 const api_key = "0f4e5887d7cf90e04bb3c6c61c84f638";
+const url = "https://api.openweathermap.org/data/2.5/forecast";
 const url_weather = "https://api.openweathermap.org/data/2.5/weather";
 
 export const setSelectedCity = payload => {
     return dispatch => {
 
-        const url_forecast = `${url_base_weather2}?q=${payload}&appid=${api_key2}`;
+        const url_forecast = `${url}?q=${payload}&appid=${api_key}`;
         // console.log(url_forecast);
 
         // activar en el estado un indicador de busqueda de datos
