@@ -43,7 +43,7 @@ LocationListContainer.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-const mapDispatchToPropsActions = dispatch => (
+const mapDispatchToProps = dispatch => (
   {
     // dispatchSetCity: value => dispatch(setCity(value))
     setCity: value => dispatch(setSelectedCity(value)),
@@ -56,4 +56,4 @@ const mapStateToProps = state => ({
   city: getCity(state),
 });
 
-export default connect(mapStateToProps, mapDispatchToPropsActions)(LocationListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationListContainer);

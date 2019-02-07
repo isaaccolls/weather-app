@@ -10,10 +10,10 @@ import './App.css';
 
 const cities = [
     'Cabudare,ve',
-    'Aspen,us',
     'Santiago,cl',
     'Chillan,cl',
     'San Carlos de Bariloche,ar',
+    'Aspen,us',
 ];
 
 class App extends Component {
