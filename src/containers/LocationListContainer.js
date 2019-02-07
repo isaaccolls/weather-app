@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setSelectedCity, setWeather } from './../actions';
+import * as actions from './../actions';
+// import { setSelectedCity, setWeather } from './../actions';
 import { getWeatherCities, getCity } from '../reducers';
 import LocationList from './../components/LocationList';
 
 export class LocationListContainer extends Component {
 
     componentDidMount() {
-      const { setWeather, setCity, cities, city } = this.props;
+      const { setWeather, setSelectedCity, cities, city } = this.props;
 
       // this.props.setWeather(this.props.cities);
       setWeather(cities);
    
       // this.props.setCity(city);
-      setCity(city);
+      setSelectedCity(city);
     }
 
     handleSelectedLocation = city => {
@@ -23,7 +25,7 @@ export class LocationListContainer extends Component {
 
         // store.dispatch(setCity(city));
         // this.props.dispatchSetCity(city);
-        this.props.setCity(city);
+        this.props.setSelectedCity(city);
     }
 
     render() {
@@ -37,19 +39,21 @@ export class LocationListContainer extends Component {
 }
 
 LocationListContainer.propTypes = {
-  setCity: PropTypes.func.isRequired,
+  setSelectedCity: PropTypes.func.isRequired,
+  setWeather: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   citiesWeather: PropTypes.array,
   city: PropTypes.string.isRequired,
 };
 
-const mapDispatchToProps = dispatch => (
-  {
-    // dispatchSetCity: value => dispatch(setCity(value))
-    setCity: value => dispatch(setSelectedCity(value)),
-    setWeather: cities => dispatch(setWeather(cities)),
-  }
-);
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+// const mapDispatchToProps = dispatch => (
+//   {
+//     // dispatchSetCity: value => dispatch(setCity(value))
+//     setSelectedCity: value => dispatch(setSelectedCity(value)),
+//     setWeather: cities => dispatch(setWeather(cities)),
+//   }
+// );
 
 const mapStateToProps = state => ({
   citiesWeather: getWeatherCities(state),
